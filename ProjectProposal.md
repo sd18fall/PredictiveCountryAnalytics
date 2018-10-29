@@ -1,12 +1,13 @@
 # Project Proposal 
+Sampei and Sara
 
-The Big Idea: What is the main idea of your project? What topics will you explore and what will you generate? What is your minimum viable product? What is a stretch goal?
+The Big Idea: 
 	
 Using a Kaggle dataset of the "happiness" scores for each country, along with several other associated metrics, we will create a program that can predict the coefficient of disparity (GINI Coefficient) between rich and poor based on the entry of other metrics for a given country. We will explore the topic of machine learning at a base level by training a dataset. The minimum viable product will be software that can be trained by the Kaggle dataset below to then generate a GINI score for a country based on other metrics being inputted. The database we are using will need to have the GINI scores added. 
 
 https://www.kaggle.com/unsdsn/world-happiness?fbclid=IwAR1nSgb8gUrdfPN-TBXBevZHqh3A2hoQ8uCrlSHFD4CKMdW-6uGc7Nv6wBQ
 
-Learning Goals: What are your individual learning goals for this project?
+Learning Goals: 
 
 Sampei: 
 Basics of Machine Learning
