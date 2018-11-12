@@ -476,7 +476,7 @@ p.introimg {
     line-height: 1em;
 }
 .slidecontainer {
-    width: 25%; /* Width of the outside container */
+    width: 100%; /* Width of the outside container */
 }
 
 /* The slider itself */
@@ -512,4 +512,48 @@ p.introimg {
     height: 25px; /* Slider handle height */
     background: #4CAF50; /* Green background */
     cursor: pointer; /* Cursor on hover */
+}
+
+
+/*Sara is messing around with making a three box   */
+/* .wrapper {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  min-width: 1000px;
+  max-width: 1100px;
+  height: 100%;
+  position: relative;
+  box-sizing: inherit;
+  background-color: rgba(0, 0, 0, .3);
+  box-sizing: border-box;
+}
+
+.wrapper:before,
+.wrapper:after {
+  content: " ";
+  display: table;
+}
+
+.wrapper:after {
+  clear: both;
+} */
+
+.box {
+  margin: 10px auto;
+  padding: 0;
+  position: relative;
+  float: left;
+  width: 33.33333%;
+  height: auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.box .content {
+  margin: 5px;
+  padding: 5px;
+  min-height: 100px;
+  background-color: rgba(0, 0, 0, .3);
+  box-sizing: border-box;
 }
