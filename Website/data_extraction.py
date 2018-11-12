@@ -14,7 +14,15 @@ def data_extraction():
     """
     # First thing: extract headings for each column to pass into pandas
     # (As of now, hard coded)
-    colnames = ['Country', 'CountryCode', 'DataName', 'DataName2', 'yr1960', 'yr1961', 'yr1962', 'yr1963']
+    colnames = ['Country', 'CountryCode', 'DataName', 'DataName2']
+    number_of_years = (1963-1960)
+    x = 0
+
+    while x in range(number_of_years):
+        year = 1960 + x
+        add_me = 'yr' + str(year)
+        colnames = colnames + [add_me]
+    #colnames = colnames + [ 'yr1960' , 'yr1961', 'yr1962', 'yr1963']
 
     # Read data from file
     data = pandas.read_csv('test.csv', names=colnames)
@@ -25,7 +33,7 @@ def data_extraction():
     year2 = data.yr1961.tolist()
     year3 = data.yr1962.tolist()
     year4 = data.yr1963.tolist()
-
+    print(year4)
 
 
 def coefficients_calc():
