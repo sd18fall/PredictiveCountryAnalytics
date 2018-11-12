@@ -47,7 +47,7 @@
             <option value="life_expectancy">Life Expectancy</option>
             <option value="gini">GINI score</option>
           </select>
-          
+
           <button type="button" onclick="alert('Hello World!')">Click Me!</button>
 
 
@@ -92,12 +92,12 @@
             <div class="content">Box A</div>
 
 
-            <div class="slidecontainer">
+            <div class="slidecontainer"> <!-- Slider 1 -->
               <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
               <p>Value: <span id="demo"></span></p>
             </div>
 
-            <script>
+            <script> <!-- Script draws from user input on slider 1 -->
             var slider = document.getElementById("myRange");
             var output = document.getElementById("demo");
             output.innerHTML = slider.value;
@@ -113,12 +113,12 @@
             <div class="content">Box B</div>
             <p> </p>
 
-            <div class="slidecontainer">
+            <div class="slidecontainer"> <!-- Slider 2 -->
               <input type="range" min="1" max="100" value="50" class="slider" id="myRange2">
               <p>Value: <span id="demo2"></span></p>
             </div>
 
-            <script>
+            <script> <!-- Script draws from user input on slider 2-->
             var slider2 = document.getElementById("myRange2");
             var output2 = document.getElementById("demo2");
             output2.innerHTML = slider2.value;
@@ -133,12 +133,12 @@
           <div class="box">
             <div class="content">Box C</div>
 
-            <div class="slidecontainer">
+            <div class="slidecontainer"> <!-- Slider 3-->
               <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
               <p>Value: <span id="demo3"></span></p>
             </div>
 
-            <script>
+            <script> <!-- Script draws from user input on slider 3 -->
             var slider3 = document.getElementById("myRange3");
             var output3 = document.getElementById("demo3");
             output3.innerHTML = slider3.value;

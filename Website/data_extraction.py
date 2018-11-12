@@ -1,7 +1,8 @@
 """ Extracts data from csv files to be displayed on the website along with
 coefficients """
 
-import pygame
+#import pygame
+import pandas
 
 __author__ = "Sara Ballantyne"
 __version__ = '0.0.1'
@@ -11,7 +12,20 @@ def data_extraction():
     >>> data_extraction()
 
     """
-    pass
+    # First thing: extract headings for each column to pass into pandas
+    # (As of now, hard coded)
+    colnames = ['Country', 'CountryCode', 'DataName', 'DataName2', 'yr1960', 'yr1961', 'yr1962', 'yr1963']
+
+    # Read data from file
+    data = pandas.read_csv('test.csv', names=colnames)
+
+    # Convert data into lists
+    names = data.Country.tolist()
+    year1 = data.yr1960.tolist()
+    year2 = data.yr1961.tolist()
+    year3 = data.yr1962.tolist()
+    year4 = data.yr1963.tolist()
+
 
 
 def coefficients_calc():
@@ -20,3 +34,5 @@ def coefficients_calc():
 
     """
     pass
+
+data_extraction()
