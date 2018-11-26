@@ -18,62 +18,43 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+None
+
+### Install
+
+* Clone repository
 
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+$ git clone https://github.com/sd18fall/PredictiveCountryAnalytics.git PredictiveCountryAnalytics
 
 ```
-Give the example
-```
-
-And repeat
+* Open repository
 
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+$ cd PredictiveCountryAnalytics
 
 ```
-Give an example
-```
 
-### And coding style tests
+To be continued
 
-Explain what these tests test and why
+## Using this project
 
-```
-Give an example
-```
+### Varying data used in project
+This project was developed using World Map data for each country in the world. It is possible to choose other World Map data in the same format for each country to predict different data.
 
-## Deployment
+How to do this will be filled in at a later date.
 
-Add additional notes about how to deploy this on a live system
 
-## Built With
-
-*
+### GUI
+* See website at ______________
+* Using drop down menu, select variables that should be predicted and mapped
+* Using sliders, vary the weight given to each variables
+* Mouse over countries on the map for information
 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+This is a student project. Please reach out to us via email if you would like to contribute.
 
 ## Versioning
 
