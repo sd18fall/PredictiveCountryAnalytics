@@ -557,3 +557,33 @@ p.introimg {
   background-color: rgba(0, 0, 0, .3);
   box-sizing: border-box;
 }
+
+
+/* Sara look here */
+.jvectormap-zoomin,.jvectormap-zoomout{
+    border: 1px solid #c8d9e5;
+    color: #565a5b;
+    font-family: 'DINWebPro-Medium W01 Regular',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 42px;
+    text-align: center;
+    cursor: pointer;
+    width: 55px;
+    position: absolute;
+    opacity: 0.5;
+    left: 17px;
+    background: white;
+    height: 44px;
+}
+.jvectormap-zoomin{
+    bottom: 55px;
+}
+.jvectormap-zoomout{
+    bottom: 5px;
+}
+.geocharts-container{
+    height:100%;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    border: 1px solid #000;
+}
