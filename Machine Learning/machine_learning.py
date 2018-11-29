@@ -31,13 +31,28 @@ def get_data(file_path):
         country_dict[row["Country Name"]] = indicator_list[index]
     return country_dict
 
+def clean_data(x):
+    '''Takes a dictionary with countries as keys and a list of indicators as a
+    list. Modifies the list to a dictionary with the year as the key and the indicator
+    as the value. Eliminates all None values.'''
+    for country in x:
+        clean_dict = dict()
+        for year in range(len(x[country])):
+            if x[country][year] != None:
+                clean_dict[year + 1960] = x[country][year]
+        x[country] = clean_dict
+    return x
+
 if __name__ == "__main__":
     gdp_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/gdp.csv'
     gdp_dict = get_data(gdp_file)
-    # gini_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/gini.csv'
-    # gini_dict = get_data(gini_file)
-    # life_exp_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/life_expectancy.csv'
-    # life_exp_dict = get_data(life_exp_file)
-    # population_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/population.csv'
-    # population_dict = get_data(population_file)
-    print(gdp_dict)
+    gdp_dict = clean_data(gdp_dict)
+    gini_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/gini.csv'
+    gini_dict = get_data(gini_file)
+    gini_dict = clean_data(gini_dict)
+    life_exp_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/life_expectancy.csv'
+    life_exp_dict = get_data(life_exp_file)
+    life_exp_dict = clean_data(life_exp_dict)
+    population_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/population.csv'
+    population_dict = get_data(population_file)
+    population_dict = clean_data(population_dict)
