@@ -19,18 +19,19 @@
 
 				<!-- Header -->
 					<header id="header">
-						<div class="logo">
+						<!-- <div class="logo">
 							<span class="icon fa-star"></span>
-						</div>
+						</div> -->
 						<div class="content">
 							<div class="inner">
-								<h1>World Map Predictive Analysis</h1>
-								<p>Description goes here from our project documentation</p>
+								<h1>World Map Predictive Visualizer</h1>
+								<p>We help you visualize country indicators through a world map with predictive capabilities.</p>
+								<nav><a href="#newpage" class = "button primary">Explore Now</a></nav>
 							</div>
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#learnmore">Learn More</a></li>
+								<li><a href="#learnmore">Our Project</a></li>
 								<li><a href="#demopage">Demo</a></li>
 								<li><a href="#getstarted">Get Started</a></li>
 								<li><a href="#teampage">Team</a></li>
@@ -44,46 +45,66 @@
 
 						<!-- Learn More -->
 							<article id="learnmore">
-								<h2 class="major">Learn More</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<h2 class="major">Our Project</h2>
+								<span class="image main"><img src="images/world.png" alt="" /></span>
 								<h3> Goal </h3>
-								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
+								<p>We sought to build an interactive country indicator (GDP, population, etc) visualizer with predictive capabilities. By using a machine learning algorithm that can generate future metrics using training data from 1960 - 2017, we will predict future metrics for countries. Users will select weights for given indicators to create an all inclusive “coefficient” which will be used to gradate a world map. </p>
+								<p>The program will have two components: the machine learning aspect and the GUI/website aspect. The machine learning model will be responsible for using prior data to generate future data. The GUI will be responsible for displaying outputs as well as deal with the interactivity of the project. The interactive user interface changes the model, which will then change the displayed metrics.</p>
 								<h3> Project Evolution </h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+								<p> We based our project idea on our respective interests. Sampei wanted to experiment with big data and machine learning while Sara wanted to work on her web development skills. We came up with the idea of a data visualization project for world indicators. </p>
+								<p>Through our architectural reviews, we gain a lot of insights on different tools to use in our project such as Flask, Scikit Learn, and Pandas. Furthermore, we gained a lot of insight on the types of indicators people were interested in visualizing. We ran our architectural reviews as focus groups to see what our users wanted to see in our website.</p>
 								<h3> Results </h3>
-								<p> Results go here </p>
+								<p> Work in progress - check back soon</p>
 
 							</article>
 
 							<!-- About -->
 								<article id="demopage">
-									<h2 class="major">About</h2>
-									<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+									<h2 class="major">Demo</h2>
 									<h3> Demo Video </h3>
+									<span class="image main"><img src="images/pic03.jpg" alt="Demo Video" /></span>
+									<p> Video will be seen here - will go through how to use web app, while giving an example </p>
 									<h3> Case Study </h3>
-									<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
+									<p>For the people who dislike videos, we'll have images with simple text walking through another case study here</p>
 								</article>
 
 						<!-- Work -->
 							<article id="getstarted">
-								<h2 class="major">Work</h2>
+								<h2 class="major">Getting Started</h2>
+								<!-- <span class="image main"><img src="images/pic02.jpg" alt="" /></span> -->
+								<h2>Using our web app</h2>
+								<p><i>This content is still up in the air -- we need to determine the best way to use the app based on how the funcitonality turns out. It will have plenty of screenshots.</i></p>
+								<ol>
+									<li>Use the sliders to select the respective weightings of the indicators you want to visualize.</li>
+									<li>Do more stuff</li>
+								</ol>
+								<h2>Project Architecture</h2>
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
-								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
+								<p><i>Image of architecture diagram goes here ^^^ </i></p>
+								<h3> Interested in deploying your own version of this code? </h3>
+								<p>Please see our source code on <a href="https://github.com/sd18fall/PredictiveCountryAnalytics">Github</a>, along with our <a href="https://github.com/sd18fall/PredictiveCountryAnalytics/blob/master/README.md">ReadMe</a> for instructions.</p>
+
+
 							</article>
 
 						<!-- Contact -->
 							<article id="teampage">
 								<h2 class="major">The Team</h2>
-								<p>Our team is comprised of two students from Babson College and Olin College of Engineering and was formed through the Software Design class at Olin College. </p>
+								<p>Our team is comprised of two students from Babson College and Olin College of Engineering, brought together through the Software Design class at Olin College. </p>
 								<ul class="alt">
 									<li> </li>
 									<li><img src="images/sara.png" alt="Sara Ballantyne" width = 300px> </li>
 									<li>Sara Ballantyne is a senior mechanical engineering student at Olin College of Engineering, with a passion for big ideas, design, fabrication, and all things that fly. Some of her passion projects include mountain bike design, working towards her private pilot’s license, creating competition electric RC aircraft and electric racecars, mentoring female students in STEM, and working towards greater cross-campus collaboration in the Boston area. She aims to spend her life contributing to large-scale, cutting-edge projects beyond our atmosphere. </li>
-
+									<li><img src="images/sampei.png" alt="Sampei Omichi" width = 300px> </li>
+									<li>Sampei Omichi is a sophomore economics and entrepreneurship student at Babson College with interests in technology, venture capital, and startups. Some of his prior projects include raising money for orphans living with HIV/AIDS, helping create a vibrant Bitcoin community in Tokyo and San Francisco, and creating a boarding school consulting program in Vietnam. In his free time, you can find him playing chess, working to cultivate untapped intelligence in developing countries through his startup, and eating tacos.</li>
 								</ul>
 
 							</article>
+
+							<!-- New page -->
+								<article id="newpage">
+									<p>This link will lead to our actual web app hosted on Heroku</p>
+								</article>
 
 						<!-- Elements -->
 							<article id="elements">
