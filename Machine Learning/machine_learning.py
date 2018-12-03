@@ -14,6 +14,14 @@ from sklearn.linear_model import LogisticRegression
 __author__ = 'Sampei and Sara'
 __version__ = '0.0.1'
 
+# class Country:
+#     '''A country with lists of indictors and years'''
+#     def __init__(self, gdp, gini, life_expectancy, population):
+#         self.gdp = gdp
+#         self.gini = gini
+#         self.life_exp = life_expectancy
+#         self.population = population
+
 def get_data(file_path):
     '''Takes a given CSV file and creates a dictionary with country names as keys
     and a list of a given statistic starting from 1960 in a list'''
@@ -24,11 +32,11 @@ def get_data(file_path):
     data = data.astype(object).where(pd.notnull(data),None)
     for index, row in data.iterrows():
         to_add = []
-        for i in row[1:]:
+        for i in row[2:]:
             to_add.append(i)
         indicator_list.append(to_add)
     for index, row in data.iterrows():
-        country_dict[row["Country Name"]] = indicator_list[index]
+        country_dict[row["Country Code"]] = indicator_list[index]
     return country_dict
 
 def clean_data(x):
@@ -43,16 +51,24 @@ def clean_data(x):
         x[country] = clean_dict
     return x
 
+def clean_dict(file_path):
+    indicator_dict = clean_data(get_data(file_path))
+    return indicator_dict
+
+def get_year(year,gdp_dict,gini_dict,life_exp_dict,population_dict):
+    year_dict = dict()
+    for country in gdp_dict:
+        year_dict[country] = [gdp_dict[country][year-1960], gini_dict[country][year-1960], life_exp_dict[country][year-1960], population_dict[country][year-1960]]
+    return year_dict
+
 if __name__ == "__main__":
-    gdp_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/gdp.csv'
-    gdp_dict = get_data(gdp_file)
-    gdp_dict = clean_data(gdp_dict)
-    gini_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/gini.csv'
-    gini_dict = get_data(gini_file)
-    gini_dict = clean_data(gini_dict)
-    life_exp_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/life_expectancy.csv'
-    life_exp_dict = get_data(life_exp_file)
-    life_exp_dict = clean_data(life_exp_dict)
-    population_file = '/home/sampeiomichi/PredictiveCountryAnalytics/Machine Learning/Datasets/population.csv'
-    population_dict = get_data(population_file)
-    population_dict = clean_data(population_dict)
+    # Data to display and calculate coefficients which contains None values
+    gdp_dict = get_data('Datasets/gdp.csv')
+    gini_dict = get_data('Datasets/gini.csv')
+    life_exp_dict = get_data('Datasets/life_expectancy.csv')
+    population_dict = get_data('Datasets/population.csv')
+    # Data to run linear regression which contains no None values
+    gdp_dict_clean = clean_dict('Datasets/gdp.csv')
+    gini_dict_clean = clean_dict('Datasets/gini.csv')
+    life_exp_dict_clean = clean_dict('Datasets/life_expectancy.csv')
+    population_dict_clean = clean_dict('Datasets/population.csv')
