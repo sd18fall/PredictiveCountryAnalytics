@@ -43,4 +43,20 @@ def coefficients_calc():
     """
     pass
 
+
 data_extraction()
+
+
+
+# Run if called from the command line
+if __name__ == "__main__":
+    # Setup code (if any) to call before test
+    setup = "from __main__ import data_extraction, coefficients_calc, test = setup function goes here"
+    ntrials = 1000
+
+    # Run tests for 1000 executions each
+    rc1_time = timeit.timeit("data_extraction(test)", setup=setup, number=ntrials)
+    print("RC1 time:", rc1_time)
+
+    rc2_time = timeit.timeit("coefficients_calc(test)", setup=setup, number=ntrials)
+    print("RC1 time:", rc1_time)

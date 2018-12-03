@@ -3139,3 +3139,19 @@
 //   slider.oninput = function() {
 //       output.innerHTML = this.value;
 //   }
+
+document.getElementById("dropdown").addEventListener('click', function () {
+    alert('Hey, you clicked the div!');
+});
+//
+// <script async defer
+// src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ142umlpMPn6tahte2VZwwNUfHkVZXcs">
+// </script>
+// <script src="https://www.gstatic.com/charts/loader.js"></script>
+// <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+// <div class="geocharts-container">
+// <div id="map-area" style="width: 80%; height: 600px;float:left;"><div id="regions_div"></div></div>
+// <div id="zoomin" class="jvectormap-zoomin">+</div>
+// <div id="zoomout" class="jvectormap-zoomout">-</div>
+// <div id="region-info"   style="float:right;width:20%;height:600px;visibility:hidden;">Text area</div>
+// </div>

@@ -7,9 +7,12 @@
     <link rel="canonical" href="https://html5-templates.com/" />
     <title>HTML Template - Full Page Slider Navigation</title>
     <meta name="description" content="A brief page description">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
 
     <script src="script.js"></script>
     <script type="text/javascript">
@@ -21,36 +24,52 @@
             });
         });
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("#populationslide").toggle();
+        });
+    });
+    </script>
+
 </head>
 
 <body>
 
 
-<ul id="menu">
+<!-- <ul id="menu">
     <li data-menuanchor="firstPage" class="active"><a href="#firstPage">First</a></li>
     <li data-menuanchor="secondPage"><a href="#secondPage">Second</a></li>
-  <!-- <li data-menuanchor="3rdPage"><a href="#3rdPage">Third</a></li> -->
-</ul>
+</ul> -->
 
 <div id="fullpage">
     <div class="section " id="section0">
         <h1>World Map Predictive Analysis</h1>
+
+       </body>
+
         <!-- <p> </p> -->
         <!-- <p class="introimg">&darr;&#9636;&darr;</p> -->
+        <h3> Options: </h3>
+        <body>
 
+           <!-- <form action = "http://localhost:5000/login" method = "post"> -->
+           <form action = "http://localhost:5000/formsubmit" method=post onsubmit="return doSomething()">
+               <select name="Options" size="4" multiple>
+                 <option value="population">Population</option>
+                 <option value="gdp">GDP/Capita</option>
+                 <option value="gini">GINI Score</option>
+                 <option value="happiness">Happiness Score</option>
+               </select>
+               <!-- <p><input type = "text" name = "nm" /></p> -->
+               <input type=submit>
+           </form>
+
+         </body>
 
         <head>
-          <h3> Options: </h3>
-          <select name="Options" size="4" multiple>
-            <option value="population">Population, overall</option>
-            <option value="gdp">GDP per capita</option>
-            <option value="life_expectancy">Life Expectancy</option>
-            <option value="gini">GINI score</option>
-          </select>
-
-          <button type="button" onclick="alert('Hello World!')">Click Me!</button>
-
-
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
             google.charts.load('current', {
@@ -62,17 +81,23 @@
             google.charts.setOnLoadCallback(drawRegionsMap);
 
             function drawRegionsMap() {
+              // Sara do this here:
+              // if array exists: // from submit above
+              //   call array as _____ then pass below
+              //
               var data = google.visualization.arrayToDataTable([
-                ['Country', 'Popularity'],
-                ['Germany', 200],
-                ['United States', 300],
-                ['Brazil', 400],
-                ['Canada', 500],
-                ['France', 600],
-                ['RU', 700]
+                ['Country', 'Coefficient', 'Popularity'],
+                ['Germany', 34, 200],
+                ['United States', 25,  300],
+                ['Brazil', 75, 400],
+                ['Canada', 14, 500],
+                ['France', 94, 600],
+                ['RU', 16, 700]
               ]);
 
               var options = {};
+
+              // var options = { displayMode: 'text' };
 
               var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
@@ -88,8 +113,9 @@
         </body>
 
         <!-- <div class="wrapper"> -->
-          <div class="box">
-            <div class="content">Box A</div>
+        <button>Toggle between hide() and show() Population</button>
+          <div class="box" id = "populationslide">
+            <div class="content">Population</div>
 
 
             <div class="slidecontainer"> <!-- Slider 1 -->
@@ -106,11 +132,12 @@
               output.innerHTML = this.value;
             }
             </script>
+            <!-- <button>Toggle between hide() and show()</button> -->
 
           </div>
 
-          <div class="box">
-            <div class="content">Box B</div>
+          <div class="box" id = "gdp">
+            <div class="content">GDP</div>
             <p> </p>
 
             <div class="slidecontainer"> <!-- Slider 2 -->
@@ -131,7 +158,7 @@
           </div>
 
           <div class="box">
-            <div class="content">Box C</div>
+            <div class="content">GINI Score</div>
 
             <div class="slidecontainer"> <!-- Slider 3-->
               <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
@@ -149,6 +176,36 @@
             </script>
 
           </div>
+
+          <div class="box">
+            <div class="content">Happiness</div>
+
+            <div class="slidecontainer"> <!-- Slider 3-->
+              <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
+              <p>Value: <span id="demo3"></span></p>
+            </div>
+
+            <script> <!-- Script draws from user input on slider 3 -->
+            var slider3 = document.getElementById("myRange3");
+            var output3 = document.getElementById("demo3");
+            output3.innerHTML = slider3.value;
+
+            slider3.oninput = function() {
+              output3.innerHTML = this.value;
+            }
+            </script>
+
+          </div>
+
+          <!--  -->
+
+          <!-- <div class="section" id="section2">
+              <div class="intro">
+                  <h1>The End</h1>
+                  <p>bottom of the page</p>
+              </div>
+          </div> -->
+        <!-- </div> -->
         <!-- </div> -->
 
     </div>
@@ -167,12 +224,6 @@
         </div>
     </div> -->
 
-    <div class="section" id="section2">
-        <div class="intro">
-            <h1>The End</h1>
-            <p>bottom of the page</p>
-        </div>
-    </div>
 </div>
 
 </body>
