@@ -134,7 +134,7 @@ def get_output(year_dict, gdp_weight, unemp_weight, life_exp_weight, population_
     life_exp_min = min(all_life_exp)
     pop_max = max(all_pop)
     pop_min = min(all_pop)
-    coef_dict = dict()
+    to_display = []
     for country in year_dict:
         if None not in year_dict[country]:
             weighted_gdp = gdp_weight*(year_dict[country][0]/gdp_max)
@@ -144,8 +144,13 @@ def get_output(year_dict, gdp_weight, unemp_weight, life_exp_weight, population_
             coef = weighted_gdp + weighted_unemp + weighted_life_exp + weighted_pop
         else:
             coef = None
-        coef_dict[country] = coef
-    return coef_dict
+        to_display.append([country,coef])
+    return to_display
+
+def get_display(year,gdp_dict,unemp_dict,life_exp_dict,population_dict,gdp_weight,unemp_weight,life_exp_weight,population_weight):
+    year_dict = get_year(year, gdp_dict, unemp_dict, life_exp_dict, population_dict)
+    display = get_output(year_dict, gdp_weight, unemp_weight, life_exp_weight, population_weight)
+    return display
 
 if __name__ == "__main__":
     # Data to run linear regression which contains no None values
@@ -167,5 +172,4 @@ if __name__ == "__main__":
     population_dict = get_data('Datasets/population.csv')
     population_dict = populate_data(life_exp_dict,life_exp_lr_dict)
     # Generate a dictionary of display values
-    year_2016 = get_year(2016, gdp_dict, unemp_dict, life_exp_dict, population_dict)
-    print(get_output(year_2016,25,25,25,25))
+    # get_display(2000,gdp_dict,unemp_dict,life_exp_dict,population_dict,25,25,25,25)
