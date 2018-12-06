@@ -1,0 +1,53 @@
+<!doctype html>
+
+<title>Hello from Flask</title>
+
+  <h1>Hello, World!</h1>
+
+  <div class="box" id = "yearslide">
+    <div class="content">Year:
+
+      <div class="slidecontainer"> <!-- Slider 1 -->
+        <input type="range" min="1990" max="2018" value="2018" class="slider" id="myRange0">
+        <p>Value: <span id="year"></span></p>
+      </div>
+
+      <script> <!-- Script draws from user input on slider 0 -->
+      var slider0 = document.getElementById("myRange0");
+      var output0 = document.getElementById("year");
+      output0.innerHTML = slider0.value;
+
+      slider0.oninput = function() {
+        output0.innerHTML = this.value;
+      }
+      </script>
+      <!-- <button>Toggle between hide() and show()</button> -->
+    </div>
+  </div>
+
+<body>
+  <p> Food list: {{ food }}</p>
+  <ul>
+      {% for item in food %}
+        <li> {{item }}</li>
+      {% endfor %}
+  </ul>
+  <form method="POST" action="/hello2">
+    <!-- {{ form.username }}
+    <input type="submit" value="Login">
+    <p> You just said: {{ value }} </p> -->
+
+    <p>Name <input type = "text" name = "Name" /></p>
+    {%  if name: %}
+      <p> {{ name }} </p>
+    {%  else: %}
+      <p>Enter name please</p>
+    {% endif %}
+
+    <p>Physics <input type = "text" name = "Physics" /></p>
+    <p>Chemistry <input type = "text" name = "chemistry" /></p>
+    <p>Maths <input type ="text" name = "Mathematics" /></p>
+    <input type="submit" value="submit">
+  </form>
+
+</body>

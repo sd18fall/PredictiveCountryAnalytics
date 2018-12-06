@@ -28,11 +28,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
     $(document).ready(function(){
-        $("button").click(function(){
+        $("buttonpop").click(function(){
             $("#populationslide").toggle();
         });
     });
     </script>
+    <script>
+    $(document).ready(function(){
+        $("buttongdp").click(function(){
+            $("#gdp").toggle();
+        });
+    });
+    </script>
+  </script>
+  <script>
+  $(document).ready(function(){
+      $("buttongini").click(function(){
+          $("#gini").toggle();
+      });
+  });
+  </script>
+  </script>
+  <script>
+  $(document).ready(function(){
+      $("buttonhappy").click(function(){
+          $("#happy").toggle();
+      });
+  });
+  </script>
+
 
 </head>
 
@@ -52,10 +76,10 @@
 
         <!-- <p> </p> -->
         <!-- <p class="introimg">&darr;&#9636;&darr;</p> -->
-        <h3> Options: </h3>
+
+        <!-- <h3> Options: </h3>
         <body>
 
-           <!-- <form action = "http://localhost:5000/login" method = "post"> -->
            <form action = "http://localhost:5000/formsubmit" method=post onsubmit="return doSomething()">
                <select name="Options" size="4" multiple>
                  <option value="population">Population</option>
@@ -63,13 +87,22 @@
                  <option value="gini">GINI Score</option>
                  <option value="happiness">Happiness Score</option>
                </select>
-               <!-- <p><input type = "text" name = "nm" /></p> -->
                <input type=submit>
            </form>
 
-         </body>
+         </body> -->
+         <body>
 
-        <head>
+            <!-- <form action = "http://localhost:5000/login" method = "post"> -->
+            <p>Year entered: {{ processed_year }}</p>
+            <yearform action = "http://localhost:5000/world_map" method=post onsubmit="return my_year_post()">
+              <input name="text">
+              <input type="submit">
+            </yearform>
+
+          </body>
+
+        <body>
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
             google.charts.load('current', {
@@ -86,13 +119,14 @@
               //   call array as _____ then pass below
               //
               var data = google.visualization.arrayToDataTable([
-                ['Country', 'Coefficient', 'Popularity'],
-                ['Germany', 34, 200],
-                ['United States', 25,  300],
-                ['Brazil', 75, 400],
-                ['Canada', 14, 500],
-                ['France', 94, 600],
-                ['RU', 16, 700]
+                ['Country', 'Coefficient'],
+                ['Germany', 34],
+                ['United States', 25],
+                ['Brazil', 75],
+                ['Canada', 14],
+                ['France', 94],
+                ['RU', 16],
+                ['China', 16]
               ]);
 
               var options = {};
@@ -104,7 +138,7 @@
               chart.draw(data, options);
             }
           </script>
-        </head>
+        </body>
 
         <body>
           <center>
@@ -112,89 +146,105 @@
           </center>
         </body>
 
+        <!-- Here's the search bar -->
+        <body>
+
+           <!-- <form action = "http://localhost:5000/login" method = "post"> -->
+           <form action = "http://localhost:5000/world_map" method=post onsubmit="return my_form_post()">
+             <input name="text">
+             <input type="submit">
+           </form>
+           <p>Country entered: {{ processed_text }}</p>
+         </body>
+
+
         <!-- <div class="wrapper"> -->
-        <button>Toggle between hide() and show() Population</button>
+        <buttonpop>Population</buttonpop>
           <div class="box" id = "populationslide">
-            <div class="content">Population</div>
+            <div class="content">
 
+              <div class="slidecontainer"> <!-- Slider 1 -->
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange" method=post onsubmit = 'return slider_post'>
+                <p>Value: <span id="demo"></span></p>
+              </div>
 
-            <div class="slidecontainer"> <!-- Slider 1 -->
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-              <p>Value: <span id="demo"></span></p>
+              <script> <!-- Script draws from user input on slider 1 -->
+              var slider = document.getElementById("myRange");
+              var output = document.getElementById("demo");
+              output.innerHTML = slider.value;
+
+              slider.oninput = function() {
+                output.innerHTML = this.value;
+              }
+              </script>
+              <!-- <button>Toggle between hide() and show()</button> -->
             </div>
-
-            <script> <!-- Script draws from user input on slider 1 -->
-            var slider = document.getElementById("myRange");
-            var output = document.getElementById("demo");
-            output.innerHTML = slider.value;
-
-            slider.oninput = function() {
-              output.innerHTML = this.value;
-            }
-            </script>
-            <!-- <button>Toggle between hide() and show()</button> -->
-
           </div>
+
+          <buttongdp>GDP</buttongdp>
+
 
           <div class="box" id = "gdp">
-            <div class="content">GDP</div>
-            <p> </p>
+            <div class="content">
 
-            <div class="slidecontainer"> <!-- Slider 2 -->
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange2">
-              <p>Value: <span id="demo2"></span></p>
+              <div class="slidecontainer"> <!-- Slider 2 -->
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange2">
+                <p>Value: <span id="demo2"></span></p>
+              </div>
+
+              <script> <!-- Script draws from user input on slider 2-->
+              var slider2 = document.getElementById("myRange2");
+              var output2 = document.getElementById("demo2");
+              output2.innerHTML = slider2.value;
+
+              slider2.oninput = function() {
+                output2.innerHTML = this.value;
+              }
+              </script>
             </div>
-
-            <script> <!-- Script draws from user input on slider 2-->
-            var slider2 = document.getElementById("myRange2");
-            var output2 = document.getElementById("demo2");
-            output2.innerHTML = slider2.value;
-
-            slider2.oninput = function() {
-              output2.innerHTML = this.value;
-            }
-            </script>
-
           </div>
 
-          <div class="box">
-            <div class="content">GINI Score</div>
+          <buttongini>GINI</buttongini>
 
-            <div class="slidecontainer"> <!-- Slider 3-->
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
-              <p>Value: <span id="demo3"></span></p>
+          <div class="box" id = "gini">
+            <div class="content">
+
+              <div class="slidecontainer"> <!-- Slider 3-->
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
+                <p>Value: <span id="demo3"></span></p>
+              </div>
+
+              <script> <!-- Script draws from user input on slider 3 -->
+              var slider3 = document.getElementById("myRange3");
+              var output3 = document.getElementById("demo3");
+              output3.innerHTML = slider3.value;
+
+              slider3.oninput = function() {
+                output3.innerHTML = this.value;
+              }
+              </script>
+
             </div>
-
-            <script> <!-- Script draws from user input on slider 3 -->
-            var slider3 = document.getElementById("myRange3");
-            var output3 = document.getElementById("demo3");
-            output3.innerHTML = slider3.value;
-
-            slider3.oninput = function() {
-              output3.innerHTML = this.value;
-            }
-            </script>
-
           </div>
 
-          <div class="box">
-            <div class="content">Happiness</div>
+          <buttonhappy>Happiness</buttonhappy>
+          <div class="box" id = "happy">
+            <div class="content">
+              <div class="slidecontainer"> <!-- Slider 3-->
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange4">
+                <p>Value: <span id="demo4"></span></p>
+              </div>
 
-            <div class="slidecontainer"> <!-- Slider 3-->
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange3">
-              <p>Value: <span id="demo3"></span></p>
+              <script> <!-- Script draws from user input on slider 4 -->
+              var slider4 = document.getElementById("myRange4");
+              var output4 = document.getElementById("demo4");
+              output4.innerHTML = slider4.value;
+
+              slider4.oninput = function() {
+                output4.innerHTML = this.value;
+              }
+              </script>
             </div>
-
-            <script> <!-- Script draws from user input on slider 3 -->
-            var slider3 = document.getElementById("myRange3");
-            var output3 = document.getElementById("demo3");
-            output3.innerHTML = slider3.value;
-
-            slider3.oninput = function() {
-              output3.innerHTML = this.value;
-            }
-            </script>
-
           </div>
 
           <!--  -->
