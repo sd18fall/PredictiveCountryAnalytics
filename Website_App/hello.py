@@ -25,9 +25,9 @@ def setup_page():
 def webapp():
    if request.method == 'POST':
       result = request.form
-      return render_template("webapp.html",result = result)
+      return render_template("webapp.html", result=result)
 
-# This route beneath here will be removed eventually
+# This route beneath here will be removed eventually, using it as reference currently
 @app.route('/world_map')
 def hello():
     return render_template('index.html')

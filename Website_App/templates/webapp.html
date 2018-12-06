@@ -14,47 +14,8 @@
             });
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function(){
-        $("buttonpop").click(function(){
-            $("#populationslide").toggle();
-        });
-    });
-    </script>
-    <script>
-    $(document).ready(function(){
-        $("buttongdp").click(function(){
-            $("#gdp").toggle();
-        });
-    });
-    </script>
-  </script>
-  <script>
-  $(document).ready(function(){
-      $("buttongini").click(function(){
-          $("#gini").toggle();
-      });
-  });
-  </script>
-  </script>
-  <script>
-  $(document).ready(function(){
-      $("buttonhappy").click(function(){
-          $("#happy").toggle();
-      });
-  });
-  </script>
-
-
 </head>
 
-<body>
-
-
-<div id="fullpage">
-    <div class="section " id="section0">
         <h1>World Map Predictive Analysis</h1>
 
        </body>
@@ -76,16 +37,29 @@
            </form>
 
          </body> -->
-         <body>
 
-            <p>Year entered: {{ processed_year }}</p>
-            <yearform action = "http://localhost:5000/world_map" method=post onsubmit="return my_year_post()">
-              <input name="text">
-              <input type="submit">
-            </yearform>
+         <!-- This table displays the received inputs from the setup page -->
+        <body>
 
-          </body>
+           <table border = 1>
+             {% for key, value in result.items() %}
 
+                <tr>
+                   <th> {{ key }} </th>
+                   <td> {{ value }} </td>
+                </tr>
+
+             {% endfor %}
+           </table>
+
+        </body>
+
+        <!-- This button takes you back to the setup page to change inputs -->
+        <form action="/setup_page">
+            <input type="submit" value="Change Inputs" />
+        </form>
+
+        <!-- This API displays a weighted world map using the table hard-coded below -->
         <body>
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
@@ -98,10 +72,6 @@
             google.charts.setOnLoadCallback(drawRegionsMap);
 
             function drawRegionsMap() {
-              // Sara do this here:
-              // if array exists: // from submit above
-              //   call array as _____ then pass below
-              //
               var data = google.visualization.arrayToDataTable([
                 ['Country', 'Coefficient'],
                 ['Germany', 34],
@@ -114,8 +84,6 @@
               ]);
 
               var options = {};
-
-              // var options = { displayMode: 'text' };
 
               var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
@@ -130,7 +98,8 @@
           </center>
         </body>
 
-        <!-- Here's the search bar -->
+
+        <!-- This is a country search bar to get more info about a specific country during the given year -->
         <body>
 
            <!-- <form action = "http://localhost:5000/login" method = "post"> -->
@@ -140,23 +109,3 @@
            </form>
            <p>Country entered: {{ processed_text }}</p>
          </body>
-
-  <!doctype html>
-  <html>
-     <body>
-
-        <table border = 1>
-           {% for item in result.items() %}
-
-           <li> {{ item }}</li>
-
-              <!-- <tr>
-                 <th> {{ key }} </th>
-                 <td> {{ value }} </td>
-              </tr> -->
-
-           {% endfor %}
-        </table>
-
-     </body>
-  </html>
