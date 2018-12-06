@@ -5,22 +5,22 @@ import math
 import matplotlib.pyplot as plt
 import csv
 
-from sklearn.linear_model import LinearRegression
-
-from sklearn.datasets import *
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn import linear_model
 
 __author__ = 'Sampei and Sara'
 __version__ = '0.0.1'
 
-# class Country:
-#     '''A country with lists of indictors and years'''
-#     def __init__(self, gdp, unemp, life_expectancy, population):
-#         self.gdp = gdp
-#         self.unemp = unemp
-#         self.life_exp = life_expectancy
-#         self.population = population
+class Country:
+    '''A country with linear regression data for all indicators'''
+    def __init__(self, m_gdp, b_gdp, m_unemp, b_unemp, m_life_exp, b_life_exp, m_pop, b_pop):
+        self.m_gdp = m_gdp
+        self.b_gdp = b_gdp
+        self.m_unemp = m_unemp
+        self.b_unemp = b_unemp
+        self.m_life_exp = m_life_exp
+        self.b_life_exp = b_life_exp
+        self.m_pop = m_pop
+        self.b_pop = b_pop
 
 def get_data(file_path):
     '''Takes a given CSV file and creates a dictionary with country names as keys
@@ -30,6 +30,7 @@ def get_data(file_path):
     data = pd.read_csv(file_path)
     data = pd.DataFrame(data)
     data = data.astype(object).where(pd.notnull(data),None)
+    # Ask Peter how to change None to NA
     for index, row in data.iterrows():
         to_add = []
         for i in row[2:]:
@@ -39,6 +40,7 @@ def get_data(file_path):
         country_dict[row["Country Code"]] = indicator_list[index]
     return country_dict
 
+# Data for Machine Learning
 def clean_data(x):
     '''Takes a dictionary with countries as keys and a list of indicators as a
     list. Modifies the list to a dictionary with the year as the key and the indicator
@@ -56,9 +58,43 @@ def clean_dict(file_path):
     indicator_dict = clean_data(get_data(file_path))
     return indicator_dict
 
+def build_lr(indicator_dict):
+    lr_dict = dict()
+    for country in indicator_dict:
+        indicator = indicator_dict[country]
+        if indicator != {}:
+            year_list = list(indicator.keys())
+            year_list_final = []
+            for year in year_list:
+                year_list_final.append([year])
+            indicator_list = list(indicator.values())
+            reg = linear_model.LinearRegression()
+            reg.fit(year_list_final,indicator_list)
+            m = reg.coef_[0]
+            b = reg.intercept_
+            lr_dict[country] = [m,b]
+        else:
+            m = None
+            b = None
+            lr_dict[country] = [m,b]
+    return lr_dict
+
+# Data for Output
+def populate_data(indicator_dict, lr_dict):
+    for country in indicator_dict:
+        for year in range(0,len(indicator_dict[country])):
+            pred_indicator = None
+            if indicator_dict[country][year] == None and lr_dict[country][0] != None and lr_dict[country][0] > 0:
+                pred_indicator = lr_dict[country][0]*(year+1960) + lr_dict[country][1]
+            if pred_indicator is not None:
+                if pred_indicator > 0:
+                    indicator_dict[country][year] = pred_indicator
+    return indicator_dict
+
 def get_year(year,gdp_dict,unemp_dict,life_exp_dict,population_dict):
     '''Takes in dictionaries for all indicators and returns a dictionary with
-    countries as keys and a list of indicators for that year as the value.'''
+    countries as keys and a list of indicators for that year as the value. Also
+    populates data using built linear regression model.'''
     year_dict = dict()
     for country in gdp_dict:
         year_dict[country] = [gdp_dict[country][year-1960], unemp_dict[country][year-1960], life_exp_dict[country][year-1960], population_dict[country][year-1960]]
@@ -112,16 +148,24 @@ def get_output(year_dict, gdp_weight, unemp_weight, life_exp_weight, population_
     return coef_dict
 
 if __name__ == "__main__":
-    # Data to display and calculate coefficients which contains None values
-    gdp_dict = get_data('Datasets/gdp.csv')
-    unemp_dict = get_data('Datasets/unemployment.csv')
-    life_exp_dict = get_data('Datasets/life_expectancy.csv')
-    population_dict = get_data('Datasets/population.csv')
     # Data to run linear regression which contains no None values
     gdp_dict_clean = clean_dict('Datasets/gdp.csv')
+    gdp_lr_dict = build_lr(gdp_dict_clean)
     unemp_dict_clean = clean_dict('Datasets/unemployment.csv')
+    unemp_lr_dict = build_lr(unemp_dict_clean)
     life_exp_dict_clean = clean_dict('Datasets/life_expectancy.csv')
+    life_exp_lr_dict = build_lr(life_exp_dict_clean)
     population_dict_clean = clean_dict('Datasets/population.csv')
+    pop_lr_dict = build_lr(population_dict_clean)
+    # Data to display and calculate coefficients which contains None values
+    gdp_dict = get_data('Datasets/gdp.csv')
+    gdp_dict = populate_data(gdp_dict,gdp_lr_dict)
+    unemp_dict = get_data('Datasets/unemployment.csv')
+    unemp_dict = populate_data(unemp_dict,unemp_lr_dict)
+    life_exp_dict = get_data('Datasets/life_expectancy.csv')
+    life_exp_dict = populate_data(life_exp_dict,life_exp_lr_dict)
+    population_dict = get_data('Datasets/population.csv')
+    population_dict = populate_data(life_exp_dict,life_exp_lr_dict)
     # Generate a dictionary of display values
-    year_2016 = get_year(2016,gdp_dict,unemp_dict,life_exp_dict,population_dict)
-    print(get_output(year_2016,100,25,25,25))
+    year_2016 = get_year(2016, gdp_dict, unemp_dict, life_exp_dict, population_dict)
+    print(get_output(year_2016,25,25,25,25))
