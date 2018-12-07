@@ -1,28 +1,29 @@
-<!doctype html>
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>World Map Predictive Visualizer - Web App</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/assets/css/main.css') }}">
+		<!-- <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript> -->
+    <noscript><link rel="stylesheet" href="{{ url_for('static',filename='styles/assets/css/noscript.css') }}" /></noscript>
 
-<title>Web App</title>
-<head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
     <script src="script.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#fullpage').fullpage({
-              sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-              anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
-              menu: '#menu',
-            });
-        });
-    </script>
 </head>
+<body class="is-preload">
 
-        <h1>World Map Predictive Analysis</h1>
+  <!-- Wrapper -->
+    <div id="wrapper">
 
-       </body>
-
-        <!-- <p> </p> -->
-        <!-- <p class="introimg">&darr;&#9636;&darr;</p> -->
+        <h1>World Map Predictive Visualizer</h1>
 
         <!-- <h3> Options: </h3>
         <body>
@@ -334,3 +335,8 @@
            </form>
            <p>Country entered: {{ processed_text }}</p>
          </body>
+
+</article>
+</body>
+
+</html>

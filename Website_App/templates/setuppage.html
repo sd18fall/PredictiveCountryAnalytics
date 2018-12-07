@@ -1,26 +1,49 @@
 <!doctype html>
-<title>Setup Page</title
-<body>
-<h2> Testing below here </h2>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>World Map Predictive Visualizer - Setup</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/assets/css/main.css') }}">
+		<!-- <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript> -->
+    <noscript><link rel="stylesheet" href="{{ url_for('static',filename='styles/assets/css/noscript.css') }}" /></noscript>
 
-<form method="POST" action="/webapp">
-<p>Year: <input type = "text" name = "Year" /></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
-<!-- <p> Options: </p>
-   <select name="Options" size="4" multiple>
-     <option value="population">Population</option>
-     <option value="gdp">GDP/Capita</option>
-     <option value="gini">GINI Score</option>
-     <option value="happiness">Happiness Score</option>
-   </select> -->
-   
-<h3>Please enter weights for each variable out of 100 (i.e. 80)</h3>
- <p> Population weight:<input type = "text" name = "Population" /></p>
- <p> GDP weight:<input type = "text" name = "GDP" /></p>
- <p> GINI weight:<input type = "text" name = "GINI" /></p>
- <p> Happiness weight:<input type = "text" name = "Happiness" /></p>
+    <script src="script.js"></script>
+</head>
+<body class="is-preload">
 
-<input type="submit" value="submit">
-</form>
+  <!-- Wrapper -->
+    <div id="wrapper">
+    <body>
+    <h1>World Map Predictive Visualizer</h1>
+    <h2> Initial Setup </h2>
 
-</body>
+    <form method="POST" action="/webapp">
+    <p>Year: <input type = "text" name = "Year" /></p>
+
+    <!-- <p> Options: </p>
+       <select name="Options" size="4" multiple>
+         <option value="population">Population</option>
+         <option value="gdp">GDP/Capita</option>
+         <option value="gini">GINI Score</option>
+         <option value="happiness">Happiness Score</option>
+       </select> -->
+
+    <h3>Please enter weights for each variable out of 100 (i.e. 80)</h3>
+     <p> Population weight:<input type = "text" name = "Population" /></p>
+     <p> GDP weight:<input type = "text" name = "GDP" /></p>
+     <p> GINI weight:<input type = "text" name = "GINI" /></p>
+     <p> Happiness weight:<input type = "text" name = "Happiness" /></p>
+
+    <input type="submit" value="submit">
+    </form>
+
+    </body>

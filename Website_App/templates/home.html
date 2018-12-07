@@ -1,10 +1,32 @@
 <!doctype html>
-<link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-<title>World Map Predictive Visualizer</title>
-  <h2>How to use<h1>
-  <h2>Content goes here about how to use our website</h2>
-  <p> we use it by.... </p>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>World Map Predictive Visualizer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/assets/css/main.css') }}">
+		<!-- <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript> -->
+    <noscript><link rel="stylesheet" href="{{ url_for('static',filename='styles/assets/css/noscript.css') }}" /></noscript>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
-  <p> Begin our visualizer here:
-  <a href="http://localhost:5000/setup_page">World Map</a></p>
+    <script src="script.js"></script>
+</head>
+<body class="is-preload">
+
+  <!-- Wrapper -->
+    <div id="wrapper">
+
+      <h1>World Map Predictive Visualizer</h1>
+
+      <p> Begin our visualizer here:
+      <a href="http://localhost:5000/setup_page">World Map</a></p>
+
+      <h3> How to Use </h3>
+      <p> We use it by.... </p>
