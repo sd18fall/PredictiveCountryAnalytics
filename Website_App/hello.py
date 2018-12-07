@@ -7,6 +7,7 @@ from flask_wtf import Form
 from wtforms import StringField, PasswordField
 from machine_learning import *
 import json
+import numpy as np
 
 
 app = Flask(__name__)
@@ -53,10 +54,14 @@ def webapp():
 
       display_list = get_display(year,gdp_dict,unemp_dict,life_exp_dict,population_dict,gdp_weight, unemp_weight, life_exp_weight, pop_weight)
       print(display_list)
-      test_list = str([['AD', 199], ['AE', 333], ['AF', 234], ['AG', 22]])
+      # test_list = [['Country', 'Coefficient'], ['AD', 199], ['AE', 333], ['AF', 234], ['AG', 22]]
+      test_list = []
+      for index in range(0, len(display_list)):
+          test_list.append(display_list[index][1])
+      # test_list = [3, 2]
       # d = json.loads(test_list)
-      d = json.JSONEncoder().encode(test_list)
-      return render_template("webapp.html", result=result, display_list=display_list, test_list=test_list, d = d)
+      # d = json.JSONEncoder().encode(test_list)
+      return render_template("webapp.html", result=result, display_list=display_list, test_list=test_list)
 
 # This route beneath here will be removed eventually, using it as reference currently
 @app.route('/world_map')
