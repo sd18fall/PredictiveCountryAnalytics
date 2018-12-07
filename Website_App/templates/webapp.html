@@ -1,4 +1,5 @@
 <!doctype html>
+
 <title>Web App</title>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -59,7 +60,10 @@
             <input type="submit" value="Change Inputs" />
         </form>
 
+        {{ test_list }}
+
         <!-- This API displays a weighted world map using the table hard-coded below -->
+
         <body>
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
           <script type="text/javascript">
@@ -72,6 +76,8 @@
             google.charts.setOnLoadCallback(drawRegionsMap);
 
             function drawRegionsMap() {
+              // var data = google.visualization.arrayToDataTable(
+              // var cars = {{ test_list }}
               var data = google.visualization.arrayToDataTable([
                 ['Country', 'Coefficient'],
                 ['Germany', 34],
@@ -82,6 +88,15 @@
                 ['RU', 16],
                 ['China', 16]
               ]);
+
+                  // data.addColumn('string', 'Country');
+                  // data.addColumn('number', 'Coefficient');
+                  // data.addRows(
+                  //   ['AD', 199], ['AE', 333], ['AF', 234], ['AG', 22]
+
+                // {{ test_list }}
+                // [['Country', 'Coefficient'], ['AD', 0], ['AE', 333], ['AF', 234], ['AG', 22]]
+              // );
 
               var options = {};
 
