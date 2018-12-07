@@ -53,11 +53,15 @@ def webapp():
       population_dict = populate_data(life_exp_dict,life_exp_lr_dict)
 
       display_list = get_display(year,gdp_dict,unemp_dict,life_exp_dict,population_dict,gdp_weight, unemp_weight, life_exp_weight, pop_weight)
-      print(display_list)
+      # print(display_list)
       # test_list = [['Country', 'Coefficient'], ['AD', 199], ['AE', 333], ['AF', 234], ['AG', 22]]
       test_list = []
       for index in range(0, len(display_list)):
           test_list.append(display_list[index][1])
+      x = sorted(test_list)
+      for i in test_list:
+          test_list[test_list.index(i)] = x.index(i)
+      print(test_list)
       # test_list = [3, 2]
       # d = json.loads(test_list)
       # d = json.JSONEncoder().encode(test_list)
