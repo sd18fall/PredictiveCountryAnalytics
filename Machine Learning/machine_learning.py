@@ -143,7 +143,7 @@ def get_output(year_dict, gdp_weight, unemp_weight, life_exp_weight, population_
             weighted_pop = population_weight*(year_dict[country][3]/pop_max)
             coef = weighted_gdp + weighted_unemp + weighted_life_exp + weighted_pop
         else:
-            coef = None
+            coef = 0
         to_display.append([country,coef])
     return to_display
 
@@ -172,4 +172,4 @@ if __name__ == "__main__":
     population_dict = get_data('Datasets/population.csv')
     population_dict = populate_data(life_exp_dict,life_exp_lr_dict)
     # Generate a dictionary of display values
-    # get_display(2000,gdp_dict,unemp_dict,life_exp_dict,population_dict,25,25,25,25)
+    print(get_display(2000,gdp_dict,unemp_dict,life_exp_dict,population_dict,25,25,25,25))
