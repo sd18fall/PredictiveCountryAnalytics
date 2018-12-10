@@ -99,7 +99,6 @@ numpydoc==0.8.0
 olefile==0.45.1
 opencv-python==3.4.3.18
 openpyxl==2.5.3
-ging==17.1packa
 pandas==0.23.0
 pandocfilters==1.4.2
 parso==0.2.0
