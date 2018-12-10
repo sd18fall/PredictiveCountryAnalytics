@@ -37,7 +37,7 @@ def get_data(file_path):
             to_add.append(i)
         indicator_list.append(to_add)
     for index, row in data.iterrows():
-        country_dict[row["Country Code"]] = indicator_list[index]
+        country_dict[row["Country Name"]] = indicator_list[index]
     return country_dict
 
 # Data for Machine Learning
@@ -147,29 +147,11 @@ def get_output(year_dict, gdp_weight, unemp_weight, life_exp_weight, population_
         to_display.append([country,coef])
     return to_display
 
+
 def get_display(year,gdp_dict,unemp_dict,life_exp_dict,population_dict,gdp_weight,unemp_weight,life_exp_weight,population_weight):
     year_dict = get_year(year, gdp_dict, unemp_dict, life_exp_dict, population_dict)
     display = get_output(year_dict, gdp_weight, unemp_weight, life_exp_weight, population_weight)
     return display
 
-if __name__ == "__main__":
-    # Data to run linear regression which contains no None values
-    gdp_dict_clean = clean_dict('Datasets/gdp.csv')
-    gdp_lr_dict = build_lr(gdp_dict_clean)
-    unemp_dict_clean = clean_dict('Datasets/unemployment.csv')
-    unemp_lr_dict = build_lr(unemp_dict_clean)
-    life_exp_dict_clean = clean_dict('Datasets/life_expectancy.csv')
-    life_exp_lr_dict = build_lr(life_exp_dict_clean)
-    population_dict_clean = clean_dict('Datasets/population.csv')
-    pop_lr_dict = build_lr(population_dict_clean)
-    # Data to display and calculate coefficients which contains None values
-    gdp_dict = get_data('Datasets/gdp.csv')
-    gdp_dict = populate_data(gdp_dict,gdp_lr_dict)
-    unemp_dict = get_data('Datasets/unemployment.csv')
-    unemp_dict = populate_data(unemp_dict,unemp_lr_dict)
-    life_exp_dict = get_data('Datasets/life_expectancy.csv')
-    life_exp_dict = populate_data(life_exp_dict,life_exp_lr_dict)
-    population_dict = get_data('Datasets/population.csv')
-    population_dict = populate_data(life_exp_dict,life_exp_lr_dict)
-    # Generate a dictionary of display values
-    # get_display(2000,gdp_dict,unemp_dict,life_exp_dict,population_dict,25,25,25,25)
+def search_country(country, year_dict):
+    return year_dict[country]
