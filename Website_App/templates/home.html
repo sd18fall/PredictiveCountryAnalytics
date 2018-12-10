@@ -17,6 +17,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
     <script src="script.js"></script>
+		<style>
+		p {
+			width: 30%;
+		}
+		</style>
 </head>
 <body class="is-preload">
 
@@ -24,9 +29,12 @@
     <div id="wrapper">
 
       <h1>World Map Predictive Visualizer</h1>
-
-      <p> Begin our visualizer here:
-      <a href="/setup_page">World Map</a></p>
-
+			<p> We help you visualize country indicators through a world map with predictive capabilities. The color gradient of a given country will be calculated based on chosen weights of various indicators.</p>
       <h2> How to Use </h2>
-      <p> We use it by.... </p>
+      <p> First, click "Go to World Map" below to bring you to the "Initial Setup" page. On this page, you will select the year you would like to look at,
+				and choose weights for each variable. </p>
+			<p> Next, click submit to view the generated world map. Your submitted values show up on the left of the screen.
+				You can mouse over each country to see the calculated "coefficient" from your weighted variables. This number is solely for comparison
+				within that specific year's generated map in order to identify how well a country matches your criteria. In order to view the actual values of each indicator, use the search
+				box on the right hand side to select a country, and click submit. The indicator values will display below. </p>
+				<a href="/setup_page"><button type="button">Go to World Map</button></a>

@@ -999,7 +999,7 @@ input, select, textarea {
 		box-shadow: inset 0 0 0 1px #ffffff;
 		color: #316ca7 !important;
 		cursor: pointer;
-		display: inline-block;
+		display: inline-block; 7
 		font-size: 0.8rem;
 		font-weight: 600;
 		height: 2.75rem;
@@ -1121,7 +1121,7 @@ input, select, textarea {
 			-webkit-transition-delay: 0.75s;
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
-			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
+			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/blankmapcrop.jpg");
 			background-size: auto, 256px 256px;
 			background-position: center, center;
 			background-repeat: no-repeat, repeat;
