@@ -17,7 +17,50 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
     <script src="script.js"></script>
+		<style>
+
+		.slidecontainer {
+		width: 45%;
+		display: inline;
+		}
+
+		.slider {
+				-webkit-appearance: none;
+				width: 100%;
+				height: 25px;
+				background: #d3d3d3;
+				outline: none;
+				opacity: 0.7;
+				-webkit-transition: .2s;
+				transition: opacity .2s;
+				display:inline;
+		}
+
+		.slider:hover {
+				opacity: 1;
+		}
+
+		.slider::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 25px;
+				height: 25px;
+				background: #4CAF50;
+				cursor: pointer;
+		}
+
+		.slider::-moz-range-thumb {
+				width: 25px;
+				height: 25px;
+				background: #4CAF50;
+				cursor: pointer;
+		}
+		p.ex2 {display: inline;}
+
+		</style>
+
 </head>
+
 <body class="is-preload">
 
   <!-- Wrapper -->
@@ -25,9 +68,9 @@
     <body>
     <h1>World Map Predictive Visualizer</h1>
     <h2> Initial Setup </h2>
-
+<!--
     <form method="POST" action="/webapp">
-    <p>Year: <input type = "text" name = "Year" /></p>
+    <p>Year: <input type = "text" name = "Year" /></p> -->
 
     <!-- <p> Options: </p>
        <select name="Options" size="4" multiple>
@@ -37,13 +80,90 @@
          <option value="happiness">Happiness Score</option>
        </select> -->
 
-    <h3>Please enter weights for each variable out of 100 (i.e. 80)</h3>
+    <!-- <h3>Please enter weights for each variable out of 100 (i.e. 80)</h3>
      <p> Population weight:<input type = "text" name = "Population" /></p>
      <p> GDP weight:<input type = "text" name = "GDP" /></p>
      <p> GINI weight:<input type = "text" name = "GINI" /></p>
      <p> Happiness weight:<input type = "text" name = "Happiness" /></p>
 
     <input type="submit" value="submit">
-    </form>
+    </form> -->
+
+<!-- Year slider -->
+		<div class="slidecontainer">
+    <form method="POST" action="/webapp">
+		  <p><b> Year: <input type="range" min="1960" max="2017" value="2000" class="slider" name="Year" id="Year"></b>
+				Value: <span id="Year_display"></span></p>
+
+			<script>
+			var slider = document.getElementById("Year");
+			var output = document.getElementById("Year_display");
+			output.innerHTML = slider.value;
+
+			slider.oninput = function() {
+				output.innerHTML = this.value;
+			}
+			</script>
+
+<!-- Population slider -->
+		  <p><b> Population: <input type="range" min="1" max="100" value="50" class="slider" name="Population" id = "Population"></b>
+				Weight: <span id="pop_display"></span>/100</p>
+
+			<script> <!-- Script draws from user input on slider 2-->
+			var slider2 = document.getElementById("Population");
+			var output2 = document.getElementById("pop_display");
+			output2.innerHTML = slider2.value;
+
+			slider2.oninput = function() {
+				output2.innerHTML = this.value;
+			}
+			</script>
+
+<!-- GDP slider -->
+		  <p><b> GDP: <input type="range" min="1" max="100" value="50" class="slider" name="GDP" id = "GDP"></b>
+				Weight: <span id="gdp_display"></span>/100</p>
+
+			<script><!-- Script draws from user input on slider 3-->
+			var slider3 = document.getElementById("GDP");
+			var output3 = document.getElementById("gdp_display");
+			output3.innerHTML = slider3.value;
+
+			slider3.oninput = function() {
+				output3.innerHTML = this.value;
+			}
+			</script>
+
+<!-- GINI slider -->
+		  <p><b> GINI:<input type="range" min="1" max="100" value="50" class="slider" name="GINI" id = "GINI"></b>
+				Weight: <span id="gini_display"></span>/100</p>
+
+			<script><!-- Script draws from user input on slider 4-->
+			var slider4 = document.getElementById("GINI");
+			var output4 = document.getElementById("gini_display");
+			output4.innerHTML = slider4.value;
+
+			slider4.oninput = function() {
+				output4.innerHTML = this.value;
+			}
+			</script>
+
+<!-- Happiness slider -->
+		  <p><b> Happiness: <input type="range" min="1" max="100" value="50" class="slider" name="Happiness" id = "Happiness"></b>
+				Weight: <span id="happy_display"></span>/100</p>
+
+			<script><!-- Script draws from user input on slider 5-->
+			var slider5 = document.getElementById("Happiness");
+			var output5 = document.getElementById("happy_display");
+			output5.innerHTML = slider5.value;
+
+			slider5.oninput = function() {
+				output5.innerHTML = this.value;
+			}
+			</script>
+
+<!-- submit form -->
+	    <input type="submit" value="submit">
+		</form>
+		</div>
 
     </body>
