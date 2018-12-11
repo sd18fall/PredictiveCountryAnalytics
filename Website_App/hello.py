@@ -42,10 +42,10 @@ def webapp():
               global life_exp_weight
               result = request.form.to_dict()
               year = int(result['Year'])
-              pop_weight = int(result['Population'])
-              gdp_weight = int(result['GDP'])
-              unemp_weight = int(result['GINI'])
-              life_exp_weight = int(result['Happiness'])
+              pop_weight = int(result['GDP'])
+              gdp_weight = int(result['Unemployment'])
+              unemp_weight = int(result['Life_Exp'])
+              life_exp_weight = int(result['Population'])
          #
          #
          # else: #you came from the same page, you need the remembered value
@@ -82,8 +82,13 @@ def webapp():
         test_list[test_list.index(i)] = x.index(i)
     print(test_list)
 
+    Year=int(result['Year'])
+    GDP = round(int(result['GDP']),2)
+    Unemployment = round(int(result['Unemployment']),2)
+    Life_Exp = round(int(result['Life_Exp']),2)
+    Population = round(int(result['Population']),2)
 
-    return render_template("webapp.html", result=result, display_list=display_list, test_list=test_list) #, year_remembered = year, pop_weight_remembered = pop_weight, gdp_weight_remembered = gdp_weight, unemp_weight_remembered = unemp_weight, life_exp_weight_remembered = life_exp_weight
+    return render_template("webapp.html", result=result, display_list=display_list, test_list=test_list, GDP=GDP, Unemployment=Unemployment, Life_Exp=Life_Exp, Population=Population, Year=Year) #, year_remembered = year, pop_weight_remembered = pop_weight, gdp_weight_remembered = gdp_weight, unemp_weight_remembered = unemp_weight, life_exp_weight_remembered = life_exp_weight
 
 
 
@@ -125,6 +130,8 @@ def webapp_two(country_searched): #, year, pop_weight, gdp_weight, unemp_weight,
 
         display_list = get_display(year,gdp_dict,unemp_dict,life_exp_dict,population_dict,gdp_weight, unemp_weight, life_exp_weight, pop_weight)
         year_dict = get_year(year,gdp_dict,unemp_dict,life_exp_dict,population_dict)
+
+
         test_list = []
         for index in range(0, len(display_list)):
             test_list.append(display_list[index][1])
@@ -133,72 +140,19 @@ def webapp_two(country_searched): #, year, pop_weight, gdp_weight, unemp_weight,
             test_list[test_list.index(i)] = x.index(i)
         print(test_list)
 
-        result = {'Year': str(year), 'Population': str(pop_weight), 'GDP': str(gdp_weight), 'GINI': str(unemp_weight), 'Happiness': str(life_exp_weight)}
+        result = {'Year': str(year), 'GDP': str(pop_weight), 'Unemployment': str(gdp_weight), 'Life_Exp': str(unemp_weight), 'Population': str(life_exp_weight)}
+
+        Year=int(result['Year'])
+        GDP = round(int(result['GDP']),2)
+        Unemployment = round(int(result['Unemployment']),2)
+        Life_Exp = round(int(result['Life_Exp']),2)
+        Population = round(int(result['Population']),2)
+
 
         country_data = search_country(country_searched, year_dict)
 
-        return render_template("webapp.html", result = result, display_list=display_list, test_list=test_list, country_searched=country_searched, country_data = country_data) #, year_remembered = year, pop_weight_remembered = pop_weight, gdp_weight_remembered = gdp_weight, unemp_weight_remembered = unemp_weight, life_exp_weight_remembered = life_exp_weight
+        return render_template("webapp.html", result = result, display_list=display_list, test_list=test_list, country_searched=country_searched, country_data = country_data, GDP=GDP, Unemployment=Unemployment, Life_Exp=Life_Exp, Population=Population, Year=Year) #, year_remembered = year, pop_weight_remembered = pop_weight, gdp_weight_remembered = gdp_weight, unemp_weight_remembered = unemp_weight, life_exp_weight_remembered = life_exp_weight
 
 
 if __name__ == '__main__':
    app.run(debug = True)
-
-
-
-
-# @app.route('/world_map', methods=['GET', 'POST'])
-# def my_form_post():
-#     text = request.form['text']
-#     processed_text = text.upper()
-#     return render_template('index.html', processed_text=processed_text)
-#
-# @app.route('/world_map', methods=['GET', 'POST'])
-# def my_year_post():
-#     year = request.form['text']
-#     processed_year = year.upper()
-#     return render_template('index.html', processed_year=processed_year)
-#
-#
-#
-# @app.route('/hello', methods= ['GET', 'POST'])
-# def helloTemplate():
-#     food = ["Cheese", "Tuna", "Beef"]
-#     form = LoginForm()
-#     return render_template('hello.html', food=food, form=form)
-#
-# @app.route('/hello2', methods= ['GET', 'POST'])
-# def result():
-#    if request.method == 'POST':
-#       result = request.form
-#       return render_template("home2.html",result = result)
-
-# Break here -- between things I am testing
-
-# @app.route('/success/<name>')
-# def success(name):
-#    return 'welcome %s' % name
-#
-# # @app.route('/login_page')
-# # def login_page():
-# #     return render_template('login.html')
-#
-# @app.route('/formsubmit',methods = ['POST', 'GET'])
-# def login():
-#    if request.method == 'POST':
-#       value1 = request.form.getlist('Options')
-#       print(value1)
-#    else:
-#       user = request.args.get('nm')
-#       return redirect(url_for('success',name = user))
-
-
-
-# @app.route('/login_page')
-# def my_form():
-#     return render_template('login.html')
-#
-# @app.route('/login_page', methods=['POST'])
-# def my_form_post():
-#     text = request.form['text']
-#     processed_text = text.upper()
-#     return processed_text

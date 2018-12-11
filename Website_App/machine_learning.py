@@ -32,7 +32,10 @@ def get_data(file_path):
     for index, row in data.iterrows():
         to_add = []
         for i in row[2:]:
-            to_add.append(i)
+            if i is not None:
+                to_add.append(round(i,2))
+            else:
+                to_add.append(i)
         indicator_list.append(to_add)
     for index, row in data.iterrows():
         country_dict[row["Country Name"]] = indicator_list[index]
@@ -86,7 +89,7 @@ def populate_data(indicator_dict, lr_dict):
                 pred_indicator = lr_dict[country][0]*(year+1960) + lr_dict[country][1]
             if pred_indicator is not None:
                 if pred_indicator > 0:
-                    indicator_dict[country][year] = pred_indicator
+                    indicator_dict[country][year] = round(pred_indicator,2)
     return indicator_dict
 
 def get_year(year,gdp_dict,unemp_dict,life_exp_dict,population_dict):

@@ -132,14 +132,27 @@
  				 <body>
  					 <h2> Your selections: </h2>
  						<table border = 1>
- 							{% for key, value in result.items() %}
+						  <tr>
+								<th> Year </th>
+								<td> {{ Year }} </td>
+						  </tr>
+							<tr>
+								 <th> GDP </th>
+								 <td> {{ GDP }} </td>
+							</tr>
+							<tr>
+								 <th> Unemployment Rate </th>
+								 <td> {{ Unemployment }} </td>
+							</tr>
+							<tr>
+								 <th> Life Expectancy </th>
+								 <td> {{ Life_Exp }} </td>
+							</tr>
+							<tr>
+								 <th> Population </th>
+								 <td> {{ Population }} </td>
+							</tr>
 
- 								 <tr>
- 										<th> {{ key }} </th>
- 										<td> {{ value }} </td>
- 								 </tr>
-
- 							{% endfor %}
  						</table>
 
  				 </body>
